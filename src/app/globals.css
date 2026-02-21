@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --accent: #e07c3c;
+  --surface: #1a1a1d;
+  --card: #252529;
+  --text: #e8e6e3;
+  --muted: #9a9691;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--surface);
+  color: var(--text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.hero-gradient {
+  background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(224, 124, 60, 0.15), transparent 60%);
+}
+
+.input-glow:focus-within {
+  box-shadow: 0 0 0 1px rgba(224, 124, 60, 0.4), 0 0 24px -4px rgba(224, 124, 60, 0.2);
+}
+
+.form-card {
+  background: linear-gradient(160deg, rgba(37, 37, 41, 0.9) 0%, rgba(26, 26, 29, 0.95) 100%);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 4px 24px -4px rgba(0, 0, 0, 0.4);
+}
+
+.form-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(224, 124, 60, 0.25) 0%, transparent 40%, transparent 60%, rgba(224, 124, 60, 0.1) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.expand-content {
+  animation: slide-down 0.35s ease-out forwards;
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
